@@ -6,20 +6,27 @@ type State = {
   error: string | null;
 };
 type Action = {
-  signinStart: () => void;
-  signinSuccess: (accessToken: State["accessToken"]) => void;
-  signinFailure: (error: State["error"]) => void;
+  authStart: () => void;
+  authSuccess: (accessToken: State["accessToken"]) => void;
+  authFailure: (error: State["error"]) => void;
+  logout: () => void;
 };
 const useAuthStoreBase = create<State & Action>((set) => ({
-  accessToken: null,
+  accessToken: localStorage.getItem("accessToken") || null,
   isLoading: false,
   error: null,
-  signinStart: () =>
+  authStart: () =>
     set(() => ({ isLoading: true, accessToken: null, error: null })),
-  signinSuccess: (accessToken) =>
-    set(() => ({ accessToken, isLoading: false, error: null })),
-  signinFailure: (error) =>
+  authSuccess: (accessToken) => {
+    set(() => ({ accessToken, isLoading: false, error: null }));
+    if (accessToken) localStorage.setItem("accessToken", accessToken);
+  },
+  authFailure: (error) =>
     set(() => ({ isLoading: false, error, accessToken: null })),
+  logout: () => {
+    set(() => ({ isLoading: false, error: null, accessToken: null }));
+    localStorage.removeItem("accessToken");
+  },
 }));
 
 export const useAuth = createSelectors(useAuthStoreBase);

@@ -6,6 +6,18 @@ export default {
       fontFamily: {
         roboto: ["'Roboto Condensed'", "sans-serif"],
       },
+      gridTemplateColumns: {
+        collections: "300px 1fr",
+      },
+      colors: {
+        background: "#fff",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        accent: {
+          green: "var(--accent-green)",
+          blue: "var(--accent-blue)",
+        },
+      },
     },
   },
   plugins: [],

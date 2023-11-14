@@ -1,14 +1,15 @@
-import { Heading } from "@radix-ui/themes";
 import { LoginForm } from "../components/forms/LoginForm";
-import { Layout } from "../layout/Layout";
+import { Link } from "react-router-dom";
 
-export const LoginPage = () => {
+const LoginPage = () => {
   return (
-    <Layout>
-      <Heading as="h2" size="8" mb="4">
-        Login
-      </Heading>
+    <section className="px-10">
+      <h2 className="text-4xl font-bold font-roboto ">Login</h2>
       <LoginForm />
-    </Layout>
+      <Link className="mt-3 inline-block" to={"/account/register"}>
+        Create account
+      </Link>
+    </section>
   );
 };
+export default LoginPage;

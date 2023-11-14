@@ -1,30 +1,54 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { LoginPage } from "./../pages/LoginPage";
-import { HomePage } from "./../pages/HomePage";
 import { ProtectedRoute } from "./ProtectedRoute";
-import { AccountPage } from "../pages/AccountPage";
+import { Layout } from "../layout/Layout";
+import { lazy } from "react";
+import { Loadable } from "../components/Loadable/Loadable";
+import { ErrorPage } from "@/pages/ErrorPage";
+import { CollectionLayout } from "@/layout/CollectionLayout";
+
+const HomePage = Loadable(lazy(() => import("../pages/HomePage")));
+const AccountPage = Loadable(lazy(() => import("../pages/AccountPage")));
+const RegisterPage = Loadable(lazy(() => import("../pages/RegisterPage")));
+const LoginPage = Loadable(lazy(() => import("../pages/LoginPage")));
+const KeyboardsPage = Loadable(
+  lazy(() => import("../pages/keyboards/KeyboardsPage")),
+);
 
 export const Routes = () => {
   const routesForAuthenticatedOnly = [
     {
       path: "/",
       element: <ProtectedRoute />,
+      errorElement: <ErrorPage />,
       children: [{ path: "/account", element: <AccountPage /> }],
     },
   ];
-  const routesForNotAuthenticatedOnly = [
+  const routesForNotAuthenticated = [
     {
-      path: "/",
+      path: "/home",
       element: <HomePage />,
     },
+
     {
       path: "/account/login",
       element: <LoginPage />,
     },
+    {
+      path: "/account/register",
+      element: <RegisterPage />,
+    },
+    {
+      path: "/collections",
+      element: <CollectionLayout />,
+      children: [{ path: "keyboards", element: <KeyboardsPage /> }],
+    },
   ];
-  const router = createBrowserRouter([
-    ...routesForNotAuthenticatedOnly,
-    ...routesForAuthenticatedOnly,
-  ]);
+  const routes = {
+    path: "/",
+    element: <Layout />,
+    children: [...routesForNotAuthenticated, ...routesForAuthenticatedOnly],
+  };
+
+  const router = createBrowserRouter([routes]);
   return <RouterProvider router={router} />;
 };

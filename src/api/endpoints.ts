@@ -4,6 +4,11 @@ const Endpoints = {
     SIGNIN: "/auth/signin",
     REFRESH: "/auth/refresh",
     LOGOUT: "/auth/logout",
+    GET_PROFILE: "/user/profile",
+  },
+  KEYBOARD: {
+    all: "/keyboard",
+    byId: (id: string) => `/keyboard${id}`,
   },
 };
 

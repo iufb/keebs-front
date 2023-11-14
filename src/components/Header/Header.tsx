@@ -1,39 +1,49 @@
-import { Box, Heading, Text } from "@radix-ui/themes";
+import { Link } from "react-router-dom";
+import { UserIcon } from "../icons";
 const navlist = [
   {
-    href: "/keyboards",
+    href: "/collections/keyboards",
     name: "Keyboards",
   },
   {
-    href: "/keycaps",
+    href: "/collections/keycaps",
     name: "Keycaps",
   },
   {
-    href: "/switches",
+    href: "/collections/switches",
     name: "Switches",
+  },
+  {
+    href: "/collections/accessories",
+    name: "Accessories",
   },
 ];
 export const Header = () => {
   return (
-    <header className="w-full px-10 h-20 flex justify-around items-center bg-white shadow-md font-roboto">
-      <Heading as="h1" size="7" color="gray">
-        <a href="/">Keebs.</a>
-      </Heading>
-      <nav>
-        <ul className="flex gap-5 ">
-          {navlist.map((navItem) => (
-            <li
-              className="text-lg font-bold hover:underline-offset-[20px] hover:underline "
-              key={navItem.name}
-            >
-              <a href={navItem.href}>{navItem.name}</a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <Box>
-        <a href="/account">User</a>
-      </Box>
-    </header>
+    <>
+      <div className="w-full h-7  bg-gradient-to-l to-accent-green from-accent-blue" />
+      <header className="w-full px-11 h-14 flex justify-around items-center bg-white shadow-md font-roboto mb-10">
+        <h1 className="text-3xl ">
+          <Link to="/home">Keebs.</Link>
+        </h1>
+        <nav>
+          <ul className="flex gap-5 ">
+            {navlist.map((navItem) => (
+              <li
+                className="text-lg font-bold hover:underline-offset-[20px] hover:underline "
+                key={navItem.name}
+              >
+                <Link to={navItem.href}>{navItem.name}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div>
+          <Link to="/account">
+            <UserIcon />
+          </Link>
+        </div>
+      </header>
+    </>
   );
 };

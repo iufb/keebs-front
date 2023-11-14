@@ -1,5 +1,10 @@
-import { Layout } from "../layout/Layout";
+import { Hero } from "../components/Hero/Hero";
 
-export const HomePage = () => {
-  return <Layout>Home</Layout>;
+const HomePage = () => {
+  return (
+    <section>
+      <Hero />
+    </section>
+  );
 };
+export default HomePage;

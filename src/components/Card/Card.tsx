@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Link, type LinkProps } from "react-router-dom";
+import { CustomImage } from "../ui/img";
 
 interface ICard extends LinkProps {
   name: string;
@@ -19,7 +20,8 @@ export const Card: FC<ICard> = ({
 }) => {
   return (
     <Link className={`${className} w-full h-full col gap-2`} {...props}>
-      <img src={img} alt={name} className="rounded-lg" />
+      <CustomImage src={img} alt={name} className="rounded-lg" />
+      {/* <img src={img} alt={name} className="rounded-lg" /> */}
       <h2 className="font-bold">{name}</h2>
       <div className="flex gap-2">
         <span>{rating} Rating</span>

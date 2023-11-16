@@ -13,10 +13,6 @@ const navlist = [
     href: "/collections/switches",
     name: "Switches",
   },
-  {
-    href: "/collections/accessories",
-    name: "Accessories",
-  },
 ];
 export const Header = () => {
   return (

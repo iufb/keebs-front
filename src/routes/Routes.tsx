@@ -10,8 +10,14 @@ const HomePage = Loadable(lazy(() => import("../pages/HomePage")));
 const AccountPage = Loadable(lazy(() => import("../pages/AccountPage")));
 const RegisterPage = Loadable(lazy(() => import("../pages/RegisterPage")));
 const LoginPage = Loadable(lazy(() => import("../pages/LoginPage")));
-const KeyboardsPage = Loadable(
-  lazy(() => import("../pages/keyboards/KeyboardsPage")),
+const KeyboardsCatalogPage = Loadable(
+  lazy(() => import("../pages/keyboards/KeyboardsCatalogPage")),
+);
+const KeycapsCatalogPage = Loadable(
+  lazy(() => import("../pages/keycaps/KeycapsCatalogPage")),
+);
+const SwitchesCatalogPage = Loadable(
+  lazy(() => import("../pages/switches/SwitchesCatalogPage")),
 );
 
 export const Routes = () => {
@@ -40,7 +46,11 @@ export const Routes = () => {
     {
       path: "/collections",
       element: <CollectionLayout />,
-      children: [{ path: "keyboards", element: <KeyboardsPage /> }],
+      children: [
+        { path: "keyboards", element: <KeyboardsCatalogPage /> },
+        { path: "keycaps", element: <KeycapsCatalogPage /> },
+        { path: "switches", element: <SwitchesCatalogPage /> },
+      ],
     },
   ];
   const routes = {

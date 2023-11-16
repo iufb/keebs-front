@@ -8,7 +8,15 @@ const Endpoints = {
   },
   KEYBOARD: {
     all: "/keyboard",
-    byId: (id: string) => `/keyboard${id}`,
+    byId: (id: string) => `/keyboard/${id}`,
+  },
+  KEYCAP: {
+    all: "/keycap",
+    byId: (id: string) => `/keycap/${id}`,
+  },
+  SWITCHES: {
+    all: "/switches",
+    byId: (id: string) => `/switches/${id}`,
   },
 };
 

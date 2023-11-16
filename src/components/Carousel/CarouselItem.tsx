@@ -13,7 +13,7 @@ export const CarouselItem: FC<ICarouselItem> = ({
   desc,
   hidden,
 }) => (
-  <div className={`${hidden ? "hidden" : "flex"} `}>
+  <Animate className={`${hidden ? "hidden" : "flex"}  `}>
     <img src={img} alt={name} className="rounded-lg" />
     <div className="flex flex-col justify-center gap-4 items-center absolute -translate-x-1/2 left-1/2 top-1/2 text-white">
       <Animate animationIn="fadeInUp" animationOut="fadeOutUp" inDelay={350}>
@@ -28,5 +28,5 @@ export const CarouselItem: FC<ICarouselItem> = ({
         <Button variant="outlined">SHOP NOW</Button>
       </Animate>
     </div>
-  </div>
+  </Animate>
 );

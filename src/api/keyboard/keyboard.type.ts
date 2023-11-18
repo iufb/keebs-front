@@ -1,7 +1,7 @@
 export interface IKeyboard {
   name: string;
   description: string;
-  colors?: string[];
+  colors?: IKeyboardColor[];
   price: number;
   battery: IBattery;
   images: IImage[];
@@ -14,6 +14,10 @@ export interface IKeyboard {
   _id: string;
 }
 
+export interface IKeyboardColor {
+  name: string;
+  hex: string;
+}
 export interface IBattery {
   capacity: number;
   workingTimeLightsOn: number;

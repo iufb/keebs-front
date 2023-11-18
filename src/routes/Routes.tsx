@@ -19,6 +19,15 @@ const KeycapsCatalogPage = Loadable(
 const SwitchesCatalogPage = Loadable(
   lazy(() => import("../pages/switches/SwitchesCatalogPage")),
 );
+const KeyboardPage = Loadable(
+  lazy(() => import("../pages/keyboards/[id]/KeyboardPage")),
+);
+const KeycapPage = Loadable(
+  lazy(() => import("../pages/keycaps/[id]/KeycapPage")),
+);
+const SwitchesPage = Loadable(
+  lazy(() => import("../pages/switches/[id]/SwitchesPage")),
+);
 
 export const Routes = () => {
   const routesForAuthenticatedOnly = [
@@ -47,11 +56,18 @@ export const Routes = () => {
       path: "/collections",
       element: <CollectionLayout />,
       children: [
-        { path: "keyboards", element: <KeyboardsCatalogPage /> },
+        {
+          path: "keyboards",
+          element: <KeyboardsCatalogPage />,
+          children: [],
+        },
         { path: "keycaps", element: <KeycapsCatalogPage /> },
         { path: "switches", element: <SwitchesCatalogPage /> },
       ],
     },
+    { path: "/collections/keyboards/:id", element: <KeyboardPage /> },
+    { path: "/collections/keycaps/:id", element: <KeycapPage /> },
+    { path: "/collections/switches/:id", element: <SwitchesPage /> },
   ];
   const routes = {
     path: "/",

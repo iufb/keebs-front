@@ -6,7 +6,7 @@ const KeycapsCatalogPage = () => {
   return (
     <section className="w-full h-full">
       {isLoading && <div>laoding</div>}
-      {keycaps && <Catalog items={keycaps} />}
+      {keycaps && <Catalog items={keycaps} img={keycaps[0].images[0]} />}
     </section>
   );
 };

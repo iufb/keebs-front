@@ -18,7 +18,6 @@ instance.interceptors.request.use(async (config) => {
   }
   const accessToken = await getAccessToken();
 
-  console.log(accessToken, "request");
   if (accessToken) {
     const authorization = `Bearer ${accessToken}`;
     config.headers.Authorization = authorization;
